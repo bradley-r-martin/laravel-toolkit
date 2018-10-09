@@ -106,12 +106,12 @@ return [
         ],
 
         'slack' => [
-            'webhook_url' => 'https://hooks.slack.com/services/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',
+            'webhook_url' => env('SLACK_WEBHOOK_URL',''),
 
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
-            'channel' => '#support',
+            'channel' => '#'.env('SLACK_CHANNEL',config('app.name')),
 
             'username' => config('app.name'),
 

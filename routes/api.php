@@ -31,11 +31,3 @@ Route::middleware(['jwt_auth'])->group(function(){
 });
 
 
-
-
-use App\Services\Slack;
-
-Route::get('test',function(){
-    $slack = new Slack();
-    $slack->message();
-});

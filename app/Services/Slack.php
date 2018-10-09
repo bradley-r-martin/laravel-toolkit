@@ -8,18 +8,19 @@ class Slack{
 
   public function __construct(){
     $settings = [
-      'username' => 'Blumers Lawyers',
-      'channel' => '#support',
-      'link_names' => true
+      'username' => config('app.name'),
+      'channel' => '#'.env('SLACK_CHANNEL',config('app.name')),
+      'link_names' => true,
+      'icon' => ':red_circle:'
     ];
     
-    $this->client = new Client('https://hooks.slack.com/services/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', $settings);
+    $this->client = new Client(env('SLACK_WEBHOOK_URL',''), $settings);
   
   }
 
 
-  public function message(){
-    $this->client->send('Support Test API');
+  public function message($message){
+    $this->client->send($message);
   }
 
 
