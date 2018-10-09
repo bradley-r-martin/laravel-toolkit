@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use Storage;
+use ZanySoft\Zip\Zip;
+
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 
@@ -41,9 +44,41 @@ class restore extends Command
     public function handle()
     {
         //
+
+        $disk = Storage::disk('local');
+        $files = array_reverse($disk->files('/'.config('backup.backup.name')));
+
+        $backups = [];
+        foreach($files as $file){
+            $file=str_replace(
+                [
+                    config('backup.backup.name').'/'.config('backup.backup.destination.filename_prefix'),
+                    '.zip'
+                ]
+            ,'',$file);
+            $backups[] = $file;
+        }
+        if(count($backups)>0){
+
+            $backup = $this->choice('Which backup would you like to restore from?', $backups);
+
+            if ($this->confirm('Are you sure you want to restore from: ('.$backup.') ')) {
+                $file = 'storage/app/'.config('backup.backup.name').'/'.config('backup.backup.destination.filename_prefix').$backup.'.zip';
+                $this->info($file);
+                $zip = Zip::open($file);
+                $zip->extract('storage/temp');
+
+                $this->info('Extracting: '.$backup);
+            }else{
+                $this->info('Restore cancelled');
+            }
+        }else{
+            $this->info('You have no backups to restore from.');
+        }
      
-        $path = 'restore.sql';
-        DB::unprepared(file_get_contents($path));
+    
+      //  $path = 'restore.sql';
+       // DB::unprepared(file_get_contents($path));
 
     }
 }
