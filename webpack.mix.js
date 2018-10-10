@@ -11,16 +11,16 @@ let mix = require('laravel-mix');
  |
  */
 
-const path = require('path');
-mix.webpackConfig({
+// const path = require('path');
+// mix.webpackConfig({
 
-    resolve: {
+//     resolve: {
     
-        alias: {
-           'theme.config' : path.resolve(__dirname, 'resources/assets/js/')  //path.join(__dirname, 'resources/assets/scss/base/theme.config')  
-        }
-     }
-});
+//         alias: {
+//            'theme.config' : path.resolve(__dirname, 'resources/assets/js/')  //path.join(__dirname, 'resources/assets/scss/base/theme.config')  
+//         }
+//      }
+// });
 
 
 mix.react('resources/assets/js/app.js', 'public/js')
