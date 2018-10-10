@@ -11,6 +11,18 @@ let mix = require('laravel-mix');
  |
  */
 
+const path = require('path');
+mix.webpackConfig({
+
+    resolve: {
+    
+        alias: {
+           'theme.config' : path.resolve(__dirname, 'resources/assets/js/')  //path.join(__dirname, 'resources/assets/scss/base/theme.config')  
+        }
+     }
+});
+
+
 mix.react('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
     .styles(['resources/assets/css/semantic-ui.css',

@@ -18,9 +18,11 @@
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.1",
     "laravel-mix": "^2.1.11",
+    "less-loader": "^4.1.0",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "semantic-ui-react": "^0.79.1"
   },
   "dependencies": {
     "prop-types": "^15.6.0",
@@ -31,7 +33,6 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.9.1",
     "redux-thunk": "^2.2.0",
-    "ree-validate": "^3.0.2",
-    "semantic-ui-react": "^0.79.0"
+    "ree-validate": "^3.0.2"
   }
 }

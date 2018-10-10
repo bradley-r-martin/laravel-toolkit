@@ -20,7 +20,8 @@ return [
                  * The list of directories and files that will be included in the backup.
                  */
                 'include' => [
-                    base_path('storage'),
+                    base_path('storage/logs/laravel.log'),
+                    base_path('storage/app/public'),
                     base_path('.env')
                 ],
 
@@ -30,10 +31,7 @@ return [
                  * Directories used by the backup process will automatically be excluded.
                  */
                 'exclude' => [
-                    base_path('vendor'),
-                    base_path('node_modules'),
-                    base_path('storage/app/backups'),
-                    base_path('storage/framework')
+                 
                 ],
 
                 /*
@@ -61,8 +59,9 @@ return [
             /*
              * The filename prefix used for the backup zip file.
              */
-            'filename_prefix' => '',
+            'filename_prefix' => str_replace(' ','-',strtolower(mb_ereg_replace("([\.]{2,})", '', mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).])", '',env('APP_NAME', 'Laravel'))))).'-',
 
+            
             /*
              * The disk names on which the backups will be stored.
              */

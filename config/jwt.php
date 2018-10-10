@@ -21,8 +21,8 @@ return [
     |
     */
 
-    'secret' => env('JWT_SECRET', 'Y^$B,FVseZ~d,+mrP,#@DM4:U~BU6.=m9QDD+.U\'yL"bp-hTS#H+f;UR(+<xS%Hh'),
-
+    'secret' => env('APP_KEY'),
+    
     /*
     |--------------------------------------------------------------------------
     | JWT time to live
@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'user' => 'App\User',
+    'user' => 'App\Models\User',
 
     /*
     |--------------------------------------------------------------------------
